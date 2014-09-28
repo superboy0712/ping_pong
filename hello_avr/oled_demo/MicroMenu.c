@@ -1,13 +1,3 @@
-/**
-              MICRO-MENU V2
-
-          (C) Dean Camera, 2012
-        www.fourwalledcubicle.com
-     dean [at] fourwalledcubicle.com
-
-        Royalty-free for all uses.
-	                                  */
-
 #include "MicroMenu.h"
 
 /** This is used when an invalid menu handle is required in
@@ -23,7 +13,7 @@ Menu_Item_t PROGMEM NULL_MENU = {0};
  *  in the select menu item.
  */
 static void (*MenuWriteFunc)(uint8_t x, uint8_t y, const char* Text) = NULL;
-
+static void (*MenuClrFunc)(void) = NULL;
 /** \internal
  *  Pointer to the currently selected menu item.
  */
@@ -39,8 +29,15 @@ void Menu_Navigate(Menu_Item_t* const NewMenu)
 {
 	if ((NewMenu == &NULL_MENU) || (NewMenu == NULL))
 		return;
-
+	static Menu_Item_t* LastMenuItem;
+	LastMenuItem = CurrentMenuItem;
 	CurrentMenuItem = NewMenu;
+	if (MENU_ITEM_READ_POINTER(&LastMenuItem->Parent) != MENU_ITEM_READ_POINTER(&NewMenu->Parent))
+	{
+		// not the same level navigation, need to be refreshed
+		MenuClrFunc();
+	}
+	
 
 /*
 	if (MenuWriteFunc)
@@ -48,7 +45,8 @@ void Menu_Navigate(Menu_Item_t* const NewMenu)
 */
 
 	void (*SelectCallback)(uint8_t x, uint8_t y, const char* Text) = MENU_ITEM_READ_POINTER(&CurrentMenuItem->SelectCallback);
-
+	
+	Menu_DrawBase();
 	if (SelectCallback)
 		SelectCallback(pgm_read_byte(&(CurrentMenuItem->pos_x)),pgm_read_byte(&(CurrentMenuItem->pos_y)),CurrentMenuItem->Text);
 }
@@ -58,7 +56,9 @@ void Menu_SetGenericWriteCallback(void (*WriteFunc)(uint8_t x, uint8_t y, const 
 	MenuWriteFunc = WriteFunc;
 	Menu_Navigate(CurrentMenuItem);
 }
-
+void Menu_SetGenericClear(void (*ClrFunc)(void)){
+	MenuClrFunc = ClrFunc;
+}
 void Menu_EnterCurrentItem(void)
 {
 	if ((CurrentMenuItem == &NULL_MENU) || (CurrentMenuItem == NULL))

@@ -64,17 +64,13 @@ uint8_t adc_calibrate(int channel)
 	data=*p_read;		//read data from ADC
 	i=data;
 	_delay_ms(1000);
-	printf("\r\nFirst Value %d\r\n",data);
 	data=*p_read;
 	i+=data;
-	printf("\r\n2nd Value %d\r\n",data);
 	_delay_ms(1000);
 	data=*p_read;
 	i+=data;
-	printf("\r\n3rd Value %d\r\n",data);
 	
 	data=(uint8_t) (i/3);			//Average 10 samples
-	printf("\r\nMean Value %d\r\n",data);
 	_delay_ms(1000);
 	return data;
 	

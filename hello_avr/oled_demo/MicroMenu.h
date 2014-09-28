@@ -1,12 +1,3 @@
-/**
-              MICRO-MENU V2
-
-          (C) Dean Camera, 2012
-        www.fourwalledcubicle.com
-     dean [at] fourwalledcubicle.com
-
-        Royalty-free for all uses.
-	                                  */
 #ifndef _MICRO_MENU_H_
 #define _MICRO_MENU_H_
 
@@ -82,6 +73,8 @@
 	 *  \ref WriteFunc  Pointer to a callback function to execute for each selected menu item.
 	 */
 	void Menu_SetGenericWriteCallback(void (*WriteFunc)(uint8_t x, uint8_t y, const char* Text));
+	
+	void Menu_SetGenericClear(void (*ClrFunc)(void));
 
 	/** Enters the currently selected menu item, running its configured callback function (if any). */
 	void Menu_EnterCurrentItem(void);
