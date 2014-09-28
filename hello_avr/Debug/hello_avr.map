@@ -200,7 +200,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x66c
+.text           0x00000000      0x69e
  *(.vectors)
  .vectors       0x00000000       0x70 c:/program files/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm162.o
                 0x00000000                __vector_default
@@ -308,49 +308,49 @@ END GROUP
                 0x000002ee                generic_SelectCallback
  .text.genric_draw_fun
                 0x00000304       0x16 oled_demo/Example.o
- .text.main     0x0000031a       0x2e oled_demo/Example.o
+ .text.main     0x0000031a       0x26 oled_demo/Example.o
                 0x0000031a                main
  .text.Menu_Navigate
-                0x00000348       0x3a oled_demo/MicroMenu.o
-                0x00000348                Menu_Navigate
+                0x00000340       0x3a oled_demo/MicroMenu.o
+                0x00000340                Menu_Navigate
  .text.Menu_SetGenericWriteCallback
-                0x00000382       0x16 oled_demo/MicroMenu.o
-                0x00000382                Menu_SetGenericWriteCallback
+                0x0000037a       0x16 oled_demo/MicroMenu.o
+                0x0000037a                Menu_SetGenericWriteCallback
  .text.Menu_DrawBase
-                0x00000398       0x96 oled_demo/MicroMenu.o
-                0x00000398                Menu_DrawBase
+                0x00000390       0xd0 oled_demo/MicroMenu.o
+                0x00000390                Menu_DrawBase
  .text.oled_init
-                0x0000042e       0x66 oled_demo/oled.o
-                0x0000042e                oled_init
+                0x00000460       0x66 oled_demo/oled.o
+                0x00000460                oled_init
  .text.oled_goto_xy
-                0x00000494       0x22 oled_demo/oled.o
-                0x00000494                oled_goto_xy
+                0x000004c6       0x22 oled_demo/oled.o
+                0x000004c6                oled_goto_xy
  .text.oled_goto_nextln
-                0x000004b6       0x22 oled_demo/oled.o
-                0x000004b6                oled_goto_nextln
+                0x000004e8       0x22 oled_demo/oled.o
+                0x000004e8                oled_goto_nextln
  .text.oled_putchar
-                0x000004d8       0x62 oled_demo/oled.o
-                0x000004d8                oled_putchar
+                0x0000050a       0x62 oled_demo/oled.o
+                0x0000050a                oled_putchar
  .text.oled_putstr_P
-                0x0000053a       0x22 oled_demo/oled.o
-                0x0000053a                oled_putstr_P
+                0x0000056c       0x22 oled_demo/oled.o
+                0x0000056c                oled_putstr_P
  .text.oled_clear
-                0x0000055c       0x68 oled_demo/oled.o
-                0x0000055c                oled_clear
+                0x0000058e       0x68 oled_demo/oled.o
+                0x0000058e                oled_clear
  .text.oled_putchar_inverse
-                0x000005c4       0x64 oled_demo/oled.o
-                0x000005c4                oled_putchar_inverse
+                0x000005f6       0x64 oled_demo/oled.o
+                0x000005f6                oled_putchar_inverse
  .text.oled_putstr_inverse
-                0x00000628       0x1e oled_demo/oled.o
-                0x00000628                oled_putstr_inverse
+                0x0000065a       0x1e oled_demo/oled.o
+                0x0000065a                oled_putstr_inverse
  .text.oled_putstr_P_inverse
-                0x00000646       0x22 oled_demo/oled.o
-                0x00000646                oled_putstr_P_inverse
-                0x00000668                . = ALIGN (0x2)
+                0x00000678       0x22 oled_demo/oled.o
+                0x00000678                oled_putstr_P_inverse
+                0x0000069a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000668        0x0 c:/program files/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
-                0x00000668                _exit
-                0x00000668                exit
+ .fini9         0x0000069a        0x0 c:/program files/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+                0x0000069a                _exit
+                0x0000069a                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -369,11 +369,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000668        0x4 c:/program files/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000069a        0x4 c:/program files/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000066c                _etext = .
+                0x0000069e                _etext = .
 
-.data           0x00800100       0x12 load address 0x0000066c
+.data           0x00800100       0x12 load address 0x0000069e
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/program files/atmel/atmel toolchain/avr8 gcc/native/3.4.1056/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm162.o
@@ -408,8 +408,8 @@ END GROUP
                 0x00800115        0x1 oled_demo/oled.o
  *(COMMON)
                 0x00800116                PROVIDE (__bss_end, .)
-                0x0000066c                __data_load_start = LOADADDR (.data)
-                0x0000067e                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000069e                __data_load_start = LOADADDR (.data)
+                0x000006b0                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800116        0x0
                 0x00800116                PROVIDE (__noinit_start, .)
@@ -489,23 +489,23 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x13b5
+.debug_info     0x00000000     0x14aa
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x438 oled_demo/Example.o
- .debug_info    0x00000438      0x406 oled_demo/MicroMenu.o
- .debug_info    0x0000083e      0xb77 oled_demo/oled.o
+ .debug_info    0x00000000      0x420 oled_demo/Example.o
+ .debug_info    0x00000420      0x513 oled_demo/MicroMenu.o
+ .debug_info    0x00000933      0xb77 oled_demo/oled.o
 
-.debug_abbrev   0x00000000      0x5aa
+.debug_abbrev   0x00000000      0x5cb
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x19b oled_demo/Example.o
- .debug_abbrev  0x0000019b      0x18f oled_demo/MicroMenu.o
- .debug_abbrev  0x0000032a      0x280 oled_demo/oled.o
+ .debug_abbrev  0x0000019b      0x1b0 oled_demo/MicroMenu.o
+ .debug_abbrev  0x0000034b      0x280 oled_demo/oled.o
 
-.debug_line     0x00000000      0x4a8
+.debug_line     0x00000000      0x4ae
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x102 oled_demo/Example.o
- .debug_line    0x00000102      0x139 oled_demo/MicroMenu.o
- .debug_line    0x0000023b      0x26d oled_demo/oled.o
+ .debug_line    0x00000000      0x101 oled_demo/Example.o
+ .debug_line    0x00000101      0x140 oled_demo/MicroMenu.o
+ .debug_line    0x00000241      0x26d oled_demo/oled.o
 
 .debug_frame    0x00000000      0x230
  *(.debug_frame)
@@ -522,11 +522,11 @@ END GROUP
  .debug_str     0x00000352      0x10f oled_demo/oled.o
                                 0x2e7 (size before relaxing)
 
-.debug_loc      0x00000000      0x9bf
+.debug_loc      0x00000000      0xbbd
  *(.debug_loc)
  .debug_loc     0x00000000      0x14e oled_demo/Example.o
- .debug_loc     0x0000014e      0x28f oled_demo/MicroMenu.o
- .debug_loc     0x000003dd      0x5e2 oled_demo/oled.o
+ .debug_loc     0x0000014e      0x48d oled_demo/MicroMenu.o
+ .debug_loc     0x000005db      0x5e2 oled_demo/oled.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -546,11 +546,11 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x110
+.debug_ranges   0x00000000      0x170
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x28 oled_demo/Example.o
- .debug_ranges  0x00000028       0x30 oled_demo/MicroMenu.o
- .debug_ranges  0x00000058       0xb8 oled_demo/oled.o
+ .debug_ranges  0x00000028       0x90 oled_demo/MicroMenu.o
+ .debug_ranges  0x000000b8       0xb8 oled_demo/oled.o
 
 .debug_macro
  *(.debug_macro)

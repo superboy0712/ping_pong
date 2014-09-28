@@ -3,29 +3,29 @@ hello_avr.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000012  00800100  0000066c  00000700  2**0
+  0 .data         00000012  00800100  0000069e  00000732  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000066c  00000000  00000000  00000094  2**1
+  1 .text         0000069e  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000004  00800112  00800112  00000712  2**0
+  2 .bss          00000004  00800112  00800112  00000744  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000712  2**0
+  3 .comment      00000030  00000000  00000000  00000744  2**0
                   CONTENTS, READONLY
-  4 .debug_aranges 00000110  00000000  00000000  00000742  2**0
+  4 .debug_aranges 00000110  00000000  00000000  00000774  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   000013b5  00000000  00000000  00000852  2**0
+  5 .debug_info   000014aa  00000000  00000000  00000884  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000005aa  00000000  00000000  00001c07  2**0
+  6 .debug_abbrev 000005cb  00000000  00000000  00001d2e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000004a8  00000000  00000000  000021b1  2**0
+  7 .debug_line   000004ae  00000000  00000000  000022f9  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000230  00000000  00000000  0000265c  2**2
+  8 .debug_frame  00000230  00000000  00000000  000027a8  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000461  00000000  00000000  0000288c  2**0
+  9 .debug_str    00000461  00000000  00000000  000029d8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000009bf  00000000  00000000  00002ced  2**0
+ 10 .debug_loc    00000bbd  00000000  00000000  00002e39  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000110  00000000  00000000  000036ac  2**0
+ 11 .debug_ranges 00000170  00000000  00000000  000039f6  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -61,7 +61,7 @@ Disassembly of section .text:
   6c:	0c 94 75 01 	jmp	0x2ea	; 0x2ea <__bad_interrupt>
 
 00000070 <Menu_3>:
-  70:	0f 04 a5 00 8a 00 c6 00 c6 00 77 01 00 00 49 20     ..........w...I 
+  70:	0f 04 c6 00 8a 00 c6 00 c6 00 77 01 00 00 49 20     ..........w...I 
   80:	61 6d 20 54 68 69 72 64 0a 00                       am Third..
 
 0000008a <Menu_2>:
@@ -69,7 +69,7 @@ Disassembly of section .text:
   9a:	61 6d 20 53 65 63 6f 6e 64 0a 00                    am Second..
 
 000000a5 <Menu_1>:
-  a5:	05 02 8a 00 70 00 c6 00 c6 00 77 01 00 00 49 20     ....p.....w...I 
+  a5:	05 02 8a 00 c6 00 c6 00 c6 00 77 01 00 00 49 20     ..........w...I 
   b5:	6c 6f 76 65 20 5a 68 61 6e 67 20 59 75 6e 21 0a     love Zhang Yun!.
 	...
 
@@ -120,7 +120,7 @@ Disassembly of section .text:
  2bc:	11 e0       	ldi	r17, 0x01	; 1
  2be:	a0 e0       	ldi	r26, 0x00	; 0
  2c0:	b1 e0       	ldi	r27, 0x01	; 1
- 2c2:	ec e6       	ldi	r30, 0x6C	; 108
+ 2c2:	ee e9       	ldi	r30, 0x9E	; 158
  2c4:	f6 e0       	ldi	r31, 0x06	; 6
  2c6:	02 c0       	rjmp	.+4      	; 0x2cc <__do_copy_data+0x10>
  2c8:	05 90       	lpm	r0, Z+
@@ -143,7 +143,7 @@ Disassembly of section .text:
  2de:	b2 07       	cpc	r27, r18
  2e0:	e1 f7       	brne	.-8      	; 0x2da <.do_clear_bss_loop>
  2e2:	0e 94 8d 01 	call	0x31a	; 0x31a <main>
- 2e6:	0c 94 34 03 	jmp	0x668	; 0x668 <_exit>
+ 2e6:	0c 94 4d 03 	jmp	0x69a	; 0x69a <_exit>
 
 000002ea <__bad_interrupt>:
  2ea:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -159,10 +159,10 @@ void generic_SelectCallback(uint8_t x, uint8_t y, const char* str){
  2f0:	df 93       	push	r29
  2f2:	ea 01       	movw	r28, r20
 	oled_goto_xy(x,y);
- 2f4:	0e 94 4a 02 	call	0x494	; 0x494 <oled_goto_xy>
+ 2f4:	0e 94 63 02 	call	0x4c6	; 0x4c6 <oled_goto_xy>
 	oled_putstr_P_inverse(str);
  2f8:	ce 01       	movw	r24, r28
- 2fa:	0e 94 23 03 	call	0x646	; 0x646 <oled_putstr_P_inverse>
+ 2fa:	0e 94 3c 03 	call	0x678	; 0x678 <oled_putstr_P_inverse>
 }
  2fe:	df 91       	pop	r29
  300:	cf 91       	pop	r28
@@ -179,10 +179,10 @@ static void genric_draw_fun(uint8_t x, uint8_t y, const char *str){
  306:	df 93       	push	r29
  308:	ea 01       	movw	r28, r20
 	oled_goto_xy(x,y);
- 30a:	0e 94 4a 02 	call	0x494	; 0x494 <oled_goto_xy>
+ 30a:	0e 94 63 02 	call	0x4c6	; 0x4c6 <oled_goto_xy>
 	oled_putstr_P(str);
  30e:	ce 01       	movw	r24, r28
- 310:	0e 94 9d 02 	call	0x53a	; 0x53a <oled_putstr_P>
+ 310:	0e 94 b6 02 	call	0x56c	; 0x56c <oled_putstr_P>
 }
  314:	df 91       	pop	r29
  316:	cf 91       	pop	r28
@@ -195,729 +195,790 @@ static void genric_draw_fun(uint8_t x, uint8_t y, const char *str){
 int main(void)
 {	/* Set up the default menu text write callback, and navigate to an absolute menu item entry. */
 		oled_init();
- 31a:	0e 94 17 02 	call	0x42e	; 0x42e <oled_init>
+ 31a:	0e 94 30 02 	call	0x460	; 0x460 <oled_init>
 		oled_clear();
- 31e:	0e 94 ae 02 	call	0x55c	; 0x55c <oled_clear>
+ 31e:	0e 94 c7 02 	call	0x58e	; 0x58e <oled_clear>
 		oled_putstr_inverse("hello world!!\n");
  322:	82 e0       	ldi	r24, 0x02	; 2
  324:	91 e0       	ldi	r25, 0x01	; 1
- 326:	0e 94 14 03 	call	0x628	; 0x628 <oled_putstr_inverse>
+ 326:	0e 94 2d 03 	call	0x65a	; 0x65a <oled_putstr_inverse>
 	Menu_SetGenericWriteCallback(genric_draw_fun);
  32a:	82 e8       	ldi	r24, 0x82	; 130
  32c:	91 e0       	ldi	r25, 0x01	; 1
- 32e:	0e 94 c1 01 	call	0x382	; 0x382 <Menu_SetGenericWriteCallback>
+ 32e:	0e 94 bd 01 	call	0x37a	; 0x37a <Menu_SetGenericWriteCallback>
 	
 	Menu_Navigate(&Menu_1);
  332:	85 ea       	ldi	r24, 0xA5	; 165
  334:	90 e0       	ldi	r25, 0x00	; 0
- 336:	0e 94 a4 01 	call	0x348	; 0x348 <Menu_Navigate>
+ 336:	0e 94 a0 01 	call	0x340	; 0x340 <Menu_Navigate>
 	Menu_DrawBase();
- 33a:	0e 94 cc 01 	call	0x398	; 0x398 <Menu_DrawBase>
-	Menu_Navigate(&Menu_2);
- 33e:	8a e8       	ldi	r24, 0x8A	; 138
- 340:	90 e0       	ldi	r25, 0x00	; 0
- 342:	0e 94 a4 01 	call	0x348	; 0x348 <Menu_Navigate>
- 346:	ff cf       	rjmp	.-2      	; 0x346 <main+0x2c>
+ 33a:	0e 94 c8 01 	call	0x390	; 0x390 <Menu_DrawBase>
+ 33e:	ff cf       	rjmp	.-2      	; 0x33e <main+0x24>
 
-00000348 <Menu_Navigate>:
+00000340 <Menu_Navigate>:
 	return CurrentMenuItem;
 }
 
 void Menu_Navigate(Menu_Item_t* const NewMenu)
 {
 	if ((NewMenu == &NULL_MENU) || (NewMenu == NULL))
- 348:	20 e0       	ldi	r18, 0x00	; 0
- 34a:	86 3c       	cpi	r24, 0xC6	; 198
- 34c:	92 07       	cpc	r25, r18
- 34e:	c1 f0       	breq	.+48     	; 0x380 <Menu_Navigate+0x38>
- 350:	00 97       	sbiw	r24, 0x00	; 0
- 352:	b1 f0       	breq	.+44     	; 0x380 <Menu_Navigate+0x38>
+ 340:	20 e0       	ldi	r18, 0x00	; 0
+ 342:	86 3c       	cpi	r24, 0xC6	; 198
+ 344:	92 07       	cpc	r25, r18
+ 346:	c1 f0       	breq	.+48     	; 0x378 <Menu_Navigate+0x38>
+ 348:	00 97       	sbiw	r24, 0x00	; 0
+ 34a:	b1 f0       	breq	.+44     	; 0x378 <Menu_Navigate+0x38>
 		return;
 
 	CurrentMenuItem = NewMenu;
- 354:	90 93 01 01 	sts	0x0101, r25
- 358:	80 93 00 01 	sts	0x0100, r24
+ 34c:	90 93 01 01 	sts	0x0101, r25
+ 350:	80 93 00 01 	sts	0x0100, r24
 /*
 	if (MenuWriteFunc)
 		MenuWriteFunc(pgm_read_byte(&(CurrentMenuItem->pos_x)),pgm_read_byte(&(CurrentMenuItem->pos_y)),CurrentMenuItem->Text);
 */
 
 	void (*SelectCallback)(uint8_t x, uint8_t y, const char* Text) = MENU_ITEM_READ_POINTER(&CurrentMenuItem->SelectCallback);
- 35c:	fc 01       	movw	r30, r24
- 35e:	3a 96       	adiw	r30, 0x0a	; 10
- 360:	25 91       	lpm	r18, Z+
- 362:	34 91       	lpm	r19, Z
+ 354:	fc 01       	movw	r30, r24
+ 356:	3a 96       	adiw	r30, 0x0a	; 10
+ 358:	25 91       	lpm	r18, Z+
+ 35a:	34 91       	lpm	r19, Z
 
 	if (SelectCallback)
- 364:	21 15       	cp	r18, r1
- 366:	31 05       	cpc	r19, r1
- 368:	59 f0       	breq	.+22     	; 0x380 <Menu_Navigate+0x38>
+ 35c:	21 15       	cp	r18, r1
+ 35e:	31 05       	cpc	r19, r1
+ 360:	59 f0       	breq	.+22     	; 0x378 <Menu_Navigate+0x38>
 		SelectCallback(pgm_read_byte(&(CurrentMenuItem->pos_x)),pgm_read_byte(&(CurrentMenuItem->pos_y)),CurrentMenuItem->Text);
- 36a:	fc 01       	movw	r30, r24
- 36c:	31 96       	adiw	r30, 0x01	; 1
- 36e:	64 91       	lpm	r22, Z
- 370:	fc 01       	movw	r30, r24
- 372:	74 91       	lpm	r23, Z
- 374:	ac 01       	movw	r20, r24
- 376:	42 5f       	subi	r20, 0xF2	; 242
- 378:	5f 4f       	sbci	r21, 0xFF	; 255
- 37a:	87 2f       	mov	r24, r23
- 37c:	f9 01       	movw	r30, r18
- 37e:	09 95       	icall
- 380:	08 95       	ret
+ 362:	fc 01       	movw	r30, r24
+ 364:	31 96       	adiw	r30, 0x01	; 1
+ 366:	64 91       	lpm	r22, Z
+ 368:	fc 01       	movw	r30, r24
+ 36a:	74 91       	lpm	r23, Z
+ 36c:	ac 01       	movw	r20, r24
+ 36e:	42 5f       	subi	r20, 0xF2	; 242
+ 370:	5f 4f       	sbci	r21, 0xFF	; 255
+ 372:	87 2f       	mov	r24, r23
+ 374:	f9 01       	movw	r30, r18
+ 376:	09 95       	icall
+ 378:	08 95       	ret
 
-00000382 <Menu_SetGenericWriteCallback>:
+0000037a <Menu_SetGenericWriteCallback>:
 }
 
 void Menu_SetGenericWriteCallback(void (*WriteFunc)(uint8_t x, uint8_t y, const char* Text))
 {
 	MenuWriteFunc = WriteFunc;
- 382:	90 93 13 01 	sts	0x0113, r25
- 386:	80 93 12 01 	sts	0x0112, r24
+ 37a:	90 93 13 01 	sts	0x0113, r25
+ 37e:	80 93 12 01 	sts	0x0112, r24
 	Menu_Navigate(CurrentMenuItem);
- 38a:	80 91 00 01 	lds	r24, 0x0100
- 38e:	90 91 01 01 	lds	r25, 0x0101
- 392:	0e 94 a4 01 	call	0x348	; 0x348 <Menu_Navigate>
- 396:	08 95       	ret
+ 382:	80 91 00 01 	lds	r24, 0x0100
+ 386:	90 91 01 01 	lds	r25, 0x0101
+ 38a:	0e 94 a0 01 	call	0x340	; 0x340 <Menu_Navigate>
+ 38e:	08 95       	ret
 
-00000398 <Menu_DrawBase>:
+00000390 <Menu_DrawBase>:
 }
 
 /************************************************************************/
 /* draw the base of the whole menu, all same level items of new         */
 /************************************************************************/
 void Menu_DrawBase(void){
- 398:	cf 93       	push	r28
- 39a:	df 93       	push	r29
-	Menu_Item_t * ptr = CurrentMenuItem;
- 39c:	c0 91 00 01 	lds	r28, 0x0100
- 3a0:	d0 91 01 01 	lds	r29, 0x0101
+ 390:	cf 93       	push	r28
+ 392:	df 93       	push	r29
+static Menu_Item_t* CurrentMenuItem = &NULL_MENU;
+
+
+Menu_Item_t* Menu_GetCurrentMenu(void)
+{
+	return CurrentMenuItem;
+ 394:	c0 91 00 01 	lds	r28, 0x0100
+ 398:	d0 91 01 01 	lds	r29, 0x0101
+/************************************************************************/
+/* draw the base of the whole menu, all same level items of new         */
+/************************************************************************/
+void Menu_DrawBase(void){
+	Menu_Item_t * ptr = Menu_GetCurrentMenu();// payattention here you need some thing
 	if ((ptr == &NULL_MENU) || (ptr == NULL))
- 3a4:	20 e0       	ldi	r18, 0x00	; 0
- 3a6:	c6 3c       	cpi	r28, 0xC6	; 198
- 3a8:	d2 07       	cpc	r29, r18
- 3aa:	09 f4       	brne	.+2      	; 0x3ae <Menu_DrawBase+0x16>
- 3ac:	3d c0       	rjmp	.+122    	; 0x428 <Menu_DrawBase+0x90>
- 3ae:	20 97       	sbiw	r28, 0x00	; 0
- 3b0:	09 f4       	brne	.+2      	; 0x3b4 <Menu_DrawBase+0x1c>
- 3b2:	3a c0       	rjmp	.+116    	; 0x428 <Menu_DrawBase+0x90>
+ 39c:	20 e0       	ldi	r18, 0x00	; 0
+ 39e:	c6 3c       	cpi	r28, 0xC6	; 198
+ 3a0:	d2 07       	cpc	r29, r18
+ 3a2:	09 f4       	brne	.+2      	; 0x3a6 <Menu_DrawBase+0x16>
+ 3a4:	5a c0       	rjmp	.+180    	; 0x45a <Menu_DrawBase+0xca>
+ 3a6:	20 97       	sbiw	r28, 0x00	; 0
+ 3a8:	09 f4       	brne	.+2      	; 0x3ac <Menu_DrawBase+0x1c>
+ 3aa:	57 c0       	rjmp	.+174    	; 0x45a <Menu_DrawBase+0xca>
 	return;
 	// get the first item of the same level
-	while (( ptr->Previous != &NULL_MENU) && ( ptr->Previous != NULL))
- 3b4:	8c 81       	ldd	r24, Y+4	; 0x04
- 3b6:	9d 81       	ldd	r25, Y+5	; 0x05
- 3b8:	e0 e0       	ldi	r30, 0x00	; 0
- 3ba:	86 3c       	cpi	r24, 0xC6	; 198
- 3bc:	9e 07       	cpc	r25, r30
- 3be:	21 f0       	breq	.+8      	; 0x3c8 <Menu_DrawBase+0x30>
- 3c0:	00 97       	sbiw	r24, 0x00	; 0
- 3c2:	11 f0       	breq	.+4      	; 0x3c8 <Menu_DrawBase+0x30>
-		ptr = ptr->Previous;
- 3c4:	ec 01       	movw	r28, r24
- 3c6:	f6 cf       	rjmp	.-20     	; 0x3b4 <Menu_DrawBase+0x1c>
+	while (
+		(MENU_ITEM_READ_POINTER(&ptr->Previous) != &NULL_MENU)
+ 3ac:	ce 01       	movw	r24, r28
+ 3ae:	04 96       	adiw	r24, 0x04	; 4
+ 3b0:	fc 01       	movw	r30, r24
+ 3b2:	25 91       	lpm	r18, Z+
+ 3b4:	34 91       	lpm	r19, Z
+void Menu_DrawBase(void){
+	Menu_Item_t * ptr = Menu_GetCurrentMenu();// payattention here you need some thing
+	if ((ptr == &NULL_MENU) || (ptr == NULL))
+	return;
+	// get the first item of the same level
+	while (
+ 3b6:	26 5c       	subi	r18, 0xC6	; 198
+ 3b8:	30 40       	sbci	r19, 0x00	; 0
+ 3ba:	a9 f0       	breq	.+42     	; 0x3e6 <Menu_DrawBase+0x56>
+		(MENU_ITEM_READ_POINTER(&ptr->Previous) != &NULL_MENU)
+		 && (MENU_ITEM_READ_POINTER(&ptr->Previous) != NULL)
+ 3bc:	fc 01       	movw	r30, r24
+ 3be:	25 91       	lpm	r18, Z+
+ 3c0:	34 91       	lpm	r19, Z
+ 3c2:	23 2b       	or	r18, r19
+ 3c4:	81 f0       	breq	.+32     	; 0x3e6 <Menu_DrawBase+0x56>
+		 )
+		ptr = MENU_ITEM_READ_POINTER(&ptr->Previous);
+ 3c6:	fc 01       	movw	r30, r24
+ 3c8:	85 91       	lpm	r24, Z+
+ 3ca:	94 91       	lpm	r25, Z
+ 3cc:	ec 01       	movw	r28, r24
+	Menu_Item_t * ptr = Menu_GetCurrentMenu();// payattention here you need some thing
+	if ((ptr == &NULL_MENU) || (ptr == NULL))
+	return;
+	// get the first item of the same level
+	while (
+		(MENU_ITEM_READ_POINTER(&ptr->Previous) != &NULL_MENU)
+ 3ce:	04 96       	adiw	r24, 0x04	; 4
+ 3d0:	fc 01       	movw	r30, r24
+ 3d2:	25 91       	lpm	r18, Z+
+ 3d4:	34 91       	lpm	r19, Z
+void Menu_DrawBase(void){
+	Menu_Item_t * ptr = Menu_GetCurrentMenu();// payattention here you need some thing
+	if ((ptr == &NULL_MENU) || (ptr == NULL))
+	return;
+	// get the first item of the same level
+	while (
+ 3d6:	26 5c       	subi	r18, 0xC6	; 198
+ 3d8:	30 40       	sbci	r19, 0x00	; 0
+ 3da:	29 f0       	breq	.+10     	; 0x3e6 <Menu_DrawBase+0x56>
+		(MENU_ITEM_READ_POINTER(&ptr->Previous) != &NULL_MENU)
+		 && (MENU_ITEM_READ_POINTER(&ptr->Previous) != NULL)
+ 3dc:	fc 01       	movw	r30, r24
+ 3de:	25 91       	lpm	r18, Z+
+ 3e0:	34 91       	lpm	r19, Z
+ 3e2:	23 2b       	or	r18, r19
+ 3e4:	81 f7       	brne	.-32     	; 0x3c6 <Menu_DrawBase+0x36>
+		 )
+		ptr = MENU_ITEM_READ_POINTER(&ptr->Previous);
 		
 	// get the first item of the same level
 	if (MenuWriteFunc){
- 3c8:	20 91 12 01 	lds	r18, 0x0112
- 3cc:	30 91 13 01 	lds	r19, 0x0113
- 3d0:	21 15       	cp	r18, r1
- 3d2:	31 05       	cpc	r19, r1
- 3d4:	49 f1       	breq	.+82     	; 0x428 <Menu_DrawBase+0x90>
+ 3e6:	20 91 12 01 	lds	r18, 0x0112
+ 3ea:	30 91 13 01 	lds	r19, 0x0113
+ 3ee:	21 15       	cp	r18, r1
+ 3f0:	31 05       	cpc	r19, r1
+ 3f2:	09 f4       	brne	.+2      	; 0x3f6 <Menu_DrawBase+0x66>
+ 3f4:	32 c0       	rjmp	.+100    	; 0x45a <Menu_DrawBase+0xca>
 		MenuWriteFunc(pgm_read_byte(&(ptr->pos_x)),pgm_read_byte(&(ptr->pos_y)),ptr->Text);
- 3d6:	fe 01       	movw	r30, r28
- 3d8:	31 96       	adiw	r30, 0x01	; 1
- 3da:	64 91       	lpm	r22, Z
- 3dc:	fe 01       	movw	r30, r28
- 3de:	84 91       	lpm	r24, Z
- 3e0:	ae 01       	movw	r20, r28
- 3e2:	42 5f       	subi	r20, 0xF2	; 242
- 3e4:	5f 4f       	sbci	r21, 0xFF	; 255
- 3e6:	f9 01       	movw	r30, r18
- 3e8:	09 95       	icall
-		while (( ptr->Next != &NULL_MENU) && ( ptr->Next != NULL)) {
- 3ea:	0a 80       	ldd	r0, Y+2	; 0x02
- 3ec:	db 81       	ldd	r29, Y+3	; 0x03
- 3ee:	c0 2d       	mov	r28, r0
- 3f0:	f0 e0       	ldi	r31, 0x00	; 0
- 3f2:	c6 3c       	cpi	r28, 0xC6	; 198
- 3f4:	df 07       	cpc	r29, r31
- 3f6:	c1 f0       	breq	.+48     	; 0x428 <Menu_DrawBase+0x90>
- 3f8:	20 97       	sbiw	r28, 0x00	; 0
- 3fa:	b1 f0       	breq	.+44     	; 0x428 <Menu_DrawBase+0x90>
-			ptr = ptr->Next;
-			MenuWriteFunc(pgm_read_byte(&(ptr->pos_x)),pgm_read_byte(&(ptr->pos_y)),ptr->Text);
+ 3f6:	fe 01       	movw	r30, r28
+ 3f8:	31 96       	adiw	r30, 0x01	; 1
+ 3fa:	64 91       	lpm	r22, Z
  3fc:	fe 01       	movw	r30, r28
- 3fe:	31 96       	adiw	r30, 0x01	; 1
- 400:	64 91       	lpm	r22, Z
- 402:	fe 01       	movw	r30, r28
- 404:	84 91       	lpm	r24, Z
- 406:	ae 01       	movw	r20, r28
- 408:	42 5f       	subi	r20, 0xF2	; 242
- 40a:	5f 4f       	sbci	r21, 0xFF	; 255
- 40c:	e0 91 12 01 	lds	r30, 0x0112
- 410:	f0 91 13 01 	lds	r31, 0x0113
- 414:	09 95       	icall
-		ptr = ptr->Previous;
+ 3fe:	84 91       	lpm	r24, Z
+ 400:	ae 01       	movw	r20, r28
+ 402:	42 5f       	subi	r20, 0xF2	; 242
+ 404:	5f 4f       	sbci	r21, 0xFF	; 255
+ 406:	f9 01       	movw	r30, r18
+ 408:	09 95       	icall
+		while (( MENU_ITEM_READ_POINTER(&ptr->Next) != &NULL_MENU) && ( MENU_ITEM_READ_POINTER(&ptr->Next) != NULL)) {
+ 40a:	22 96       	adiw	r28, 0x02	; 2
+ 40c:	fe 01       	movw	r30, r28
+ 40e:	85 91       	lpm	r24, Z+
+ 410:	94 91       	lpm	r25, Z
+ 412:	86 5c       	subi	r24, 0xC6	; 198
+ 414:	90 40       	sbci	r25, 0x00	; 0
+ 416:	09 f1       	breq	.+66     	; 0x45a <Menu_DrawBase+0xca>
+ 418:	fe 01       	movw	r30, r28
+ 41a:	85 91       	lpm	r24, Z+
+ 41c:	94 91       	lpm	r25, Z
+ 41e:	89 2b       	or	r24, r25
+ 420:	e1 f0       	breq	.+56     	; 0x45a <Menu_DrawBase+0xca>
+			ptr = MENU_ITEM_READ_POINTER(&ptr->Next);
+ 422:	fe 01       	movw	r30, r28
+ 424:	c5 91       	lpm	r28, Z+
+ 426:	d4 91       	lpm	r29, Z
+			MenuWriteFunc(pgm_read_byte(&(ptr->pos_x)),pgm_read_byte(&(ptr->pos_y)),ptr->Text);
+ 428:	fe 01       	movw	r30, r28
+ 42a:	31 96       	adiw	r30, 0x01	; 1
+ 42c:	64 91       	lpm	r22, Z
+ 42e:	fe 01       	movw	r30, r28
+ 430:	84 91       	lpm	r24, Z
+ 432:	ae 01       	movw	r20, r28
+ 434:	42 5f       	subi	r20, 0xF2	; 242
+ 436:	5f 4f       	sbci	r21, 0xFF	; 255
+ 438:	e0 91 12 01 	lds	r30, 0x0112
+ 43c:	f0 91 13 01 	lds	r31, 0x0113
+ 440:	09 95       	icall
+		ptr = MENU_ITEM_READ_POINTER(&ptr->Previous);
 		
 	// get the first item of the same level
 	if (MenuWriteFunc){
 		MenuWriteFunc(pgm_read_byte(&(ptr->pos_x)),pgm_read_byte(&(ptr->pos_y)),ptr->Text);
-		while (( ptr->Next != &NULL_MENU) && ( ptr->Next != NULL)) {
- 416:	0a 80       	ldd	r0, Y+2	; 0x02
- 418:	db 81       	ldd	r29, Y+3	; 0x03
- 41a:	c0 2d       	mov	r28, r0
- 41c:	f0 e0       	ldi	r31, 0x00	; 0
- 41e:	c6 3c       	cpi	r28, 0xC6	; 198
- 420:	df 07       	cpc	r29, r31
- 422:	11 f0       	breq	.+4      	; 0x428 <Menu_DrawBase+0x90>
- 424:	20 97       	sbiw	r28, 0x00	; 0
- 426:	51 f7       	brne	.-44     	; 0x3fc <Menu_DrawBase+0x64>
-			ptr = ptr->Next;
+		while (( MENU_ITEM_READ_POINTER(&ptr->Next) != &NULL_MENU) && ( MENU_ITEM_READ_POINTER(&ptr->Next) != NULL)) {
+ 442:	22 96       	adiw	r28, 0x02	; 2
+ 444:	fe 01       	movw	r30, r28
+ 446:	85 91       	lpm	r24, Z+
+ 448:	94 91       	lpm	r25, Z
+ 44a:	86 5c       	subi	r24, 0xC6	; 198
+ 44c:	90 40       	sbci	r25, 0x00	; 0
+ 44e:	29 f0       	breq	.+10     	; 0x45a <Menu_DrawBase+0xca>
+ 450:	fe 01       	movw	r30, r28
+ 452:	85 91       	lpm	r24, Z+
+ 454:	94 91       	lpm	r25, Z
+ 456:	89 2b       	or	r24, r25
+ 458:	21 f7       	brne	.-56     	; 0x422 <Menu_DrawBase+0x92>
+			ptr = MENU_ITEM_READ_POINTER(&ptr->Next);
 			MenuWriteFunc(pgm_read_byte(&(ptr->pos_x)),pgm_read_byte(&(ptr->pos_y)),ptr->Text);
 		}
 	}
- 428:	df 91       	pop	r29
- 42a:	cf 91       	pop	r28
- 42c:	08 95       	ret
+ 45a:	df 91       	pop	r29
+ 45c:	cf 91       	pop	r28
+ 45e:	08 95       	ret
 
-0000042e <oled_init>:
+00000460 <oled_init>:
 }
 
  
  void oled_init(void)
  {
  	MCUCR |= (1<<SRE);        //Enable External Memory interface
- 42e:	85 b7       	in	r24, 0x35	; 53
- 430:	80 68       	ori	r24, 0x80	; 128
- 432:	85 bf       	out	0x35, r24	; 53
+ 460:	85 b7       	in	r24, 0x35	; 53
+ 462:	80 68       	ori	r24, 0x80	; 128
+ 464:	85 bf       	out	0x35, r24	; 53
  	SFIOR |= (1<<XMM2);       //Mask out higher 4 bits of address
- 434:	80 b7       	in	r24, 0x30	; 48
- 436:	80 62       	ori	r24, 0x20	; 32
- 438:	80 bf       	out	0x30, r24	; 48
+ 466:	80 b7       	in	r24, 0x30	; 48
+ 468:	80 62       	ori	r24, 0x20	; 32
+ 46a:	80 bf       	out	0x30, r24	; 48
  	volatile uint8_t *addr= (uint8_t *) OLED_ADDR_CMD_START;		//selcet command mode
  	
  	//code copied from datasheet
  	*addr=0xae;				//turn display off
- 43a:	ef e0       	ldi	r30, 0x0F	; 15
- 43c:	f0 e1       	ldi	r31, 0x10	; 16
- 43e:	8e ea       	ldi	r24, 0xAE	; 174
- 440:	80 83       	st	Z, r24
+ 46c:	ef e0       	ldi	r30, 0x0F	; 15
+ 46e:	f0 e1       	ldi	r31, 0x10	; 16
+ 470:	8e ea       	ldi	r24, 0xAE	; 174
+ 472:	80 83       	st	Z, r24
  	*addr=0xa1;			//column addr 127 is mapped to seg0
- 442:	81 ea       	ldi	r24, 0xA1	; 161
- 444:	80 83       	st	Z, r24
+ 474:	81 ea       	ldi	r24, 0xA1	; 161
+ 476:	80 83       	st	Z, r24
  	*addr=0xda;				//com pin configuration
- 446:	8a ed       	ldi	r24, 0xDA	; 218
- 448:	80 83       	st	Z, r24
- 	*addr=0x12;				//com pin config=alternative
- 44a:	82 e1       	ldi	r24, 0x12	; 18
- 44c:	80 83       	st	Z, r24
- 	*addr=0xc8;				//o/p scan direction com63 to com0
- 44e:	88 ec       	ldi	r24, 0xC8	; 200
- 450:	80 83       	st	Z, r24
- 	*addr=0xa8;				//multiplex ratio config
- 452:	88 ea       	ldi	r24, 0xA8	; 168
- 454:	80 83       	st	Z, r24
- 	*addr=0x3f;				//ratio=63
- 456:	8f e3       	ldi	r24, 0x3F	; 63
- 458:	80 83       	st	Z, r24
- 	*addr=0xd5;				//dclck ratio
- 45a:	85 ed       	ldi	r24, 0xD5	; 213
- 45c:	80 83       	st	Z, r24
- 	*addr=0x80;				//divide ratio and oscl. frequency
- 45e:	80 e8       	ldi	r24, 0x80	; 128
- 460:	80 83       	st	Z, r24
- 	*addr=0x81;				//contrast control
- 462:	81 e8       	ldi	r24, 0x81	; 129
- 464:	80 83       	st	Z, r24
- 	*addr=0x50;				//value of contrast is 50h
- 466:	80 e5       	ldi	r24, 0x50	; 80
- 468:	80 83       	st	Z, r24
- 	*addr=0xd9;				//set pre-charge period
- 46a:	89 ed       	ldi	r24, 0xD9	; 217
- 46c:	80 83       	st	Z, r24
- 	*addr=0x21;				//value =21
- 46e:	81 e2       	ldi	r24, 0x21	; 33
- 470:	80 83       	st	Z, r24
- 	*addr=0x20;				//set memory addressing mode
- 472:	80 e2       	ldi	r24, 0x20	; 32
- 474:	80 83       	st	Z, r24
- 	*addr=0x00;				//horz addressing mode
- 476:	10 82       	st	Z, r1
- 	*addr=0xdb;				//vcom de-select level mode
- 478:	8b ed       	ldi	r24, 0xDB	; 219
+ 478:	8a ed       	ldi	r24, 0xDA	; 218
  47a:	80 83       	st	Z, r24
- 	*addr=0x30;				//value=0.83vcc
- 47c:	80 e3       	ldi	r24, 0x30	; 48
+ 	*addr=0x12;				//com pin config=alternative
+ 47c:	82 e1       	ldi	r24, 0x12	; 18
  47e:	80 83       	st	Z, r24
- 	*addr=0xad;				//master configuration
- 480:	8d ea       	ldi	r24, 0xAD	; 173
+ 	*addr=0xc8;				//o/p scan direction com63 to com0
+ 480:	88 ec       	ldi	r24, 0xC8	; 200
  482:	80 83       	st	Z, r24
+ 	*addr=0xa8;				//multiplex ratio config
+ 484:	88 ea       	ldi	r24, 0xA8	; 168
+ 486:	80 83       	st	Z, r24
+ 	*addr=0x3f;				//ratio=63
+ 488:	8f e3       	ldi	r24, 0x3F	; 63
+ 48a:	80 83       	st	Z, r24
+ 	*addr=0xd5;				//dclck ratio
+ 48c:	85 ed       	ldi	r24, 0xD5	; 213
+ 48e:	80 83       	st	Z, r24
+ 	*addr=0x80;				//divide ratio and oscl. frequency
+ 490:	80 e8       	ldi	r24, 0x80	; 128
+ 492:	80 83       	st	Z, r24
+ 	*addr=0x81;				//contrast control
+ 494:	81 e8       	ldi	r24, 0x81	; 129
+ 496:	80 83       	st	Z, r24
+ 	*addr=0x50;				//value of contrast is 50h
+ 498:	80 e5       	ldi	r24, 0x50	; 80
+ 49a:	80 83       	st	Z, r24
+ 	*addr=0xd9;				//set pre-charge period
+ 49c:	89 ed       	ldi	r24, 0xD9	; 217
+ 49e:	80 83       	st	Z, r24
+ 	*addr=0x21;				//value =21
+ 4a0:	81 e2       	ldi	r24, 0x21	; 33
+ 4a2:	80 83       	st	Z, r24
+ 	*addr=0x20;				//set memory addressing mode
+ 4a4:	80 e2       	ldi	r24, 0x20	; 32
+ 4a6:	80 83       	st	Z, r24
+ 	*addr=0x00;				//horz addressing mode
+ 4a8:	10 82       	st	Z, r1
+ 	*addr=0xdb;				//vcom de-select level mode
+ 4aa:	8b ed       	ldi	r24, 0xDB	; 219
+ 4ac:	80 83       	st	Z, r24
+ 	*addr=0x30;				//value=0.83vcc
+ 4ae:	80 e3       	ldi	r24, 0x30	; 48
+ 4b0:	80 83       	st	Z, r24
+ 	*addr=0xad;				//master configuration
+ 4b2:	8d ea       	ldi	r24, 0xAD	; 173
+ 4b4:	80 83       	st	Z, r24
  	*addr=0x00;				//select extrenal iref
- 484:	10 82       	st	Z, r1
+ 4b6:	10 82       	st	Z, r1
  	*addr=0xa4;				//out follows ram content
- 486:	84 ea       	ldi	r24, 0xA4	; 164
- 488:	80 83       	st	Z, r24
+ 4b8:	84 ea       	ldi	r24, 0xA4	; 164
+ 4ba:	80 83       	st	Z, r24
  	*addr=0xa6;				//set normal display
- 48a:	86 ea       	ldi	r24, 0xA6	; 166
- 48c:	80 83       	st	Z, r24
+ 4bc:	86 ea       	ldi	r24, 0xA6	; 166
+ 4be:	80 83       	st	Z, r24
  	*addr=0xaf;				//display on
- 48e:	8f ea       	ldi	r24, 0xAF	; 175
- 490:	80 83       	st	Z, r24
- 492:	08 95       	ret
+ 4c0:	8f ea       	ldi	r24, 0xAF	; 175
+ 4c2:	80 83       	st	Z, r24
+ 4c4:	08 95       	ret
 
-00000494 <oled_goto_xy>:
+000004c6 <oled_goto_xy>:
 
 
 
 void oled_goto_xy(uint8_t col,uint8_t row){
 	// input: 0 to max - min.
 	current_col_address = col;
- 494:	80 93 15 01 	sts	0x0115, r24
+ 4c6:	80 93 15 01 	sts	0x0115, r24
 	current_pag_address = row;
- 498:	60 93 14 01 	sts	0x0114, r22
+ 4ca:	60 93 14 01 	sts	0x0114, r22
 void oled_wr_cmd(uint8_t cmd){
 	// write cmd to oled!! very important to add volatile
 	/*volatile char * const addr = OLED_ADDR_CMD_START;
 	*addr = cmd;*/
 	volatile uint8_t *  addr = (uint8_t *)OLED_ADDR_CMD_START;
 	*addr = cmd;
- 49c:	ef e0       	ldi	r30, 0x0F	; 15
- 49e:	f0 e1       	ldi	r31, 0x10	; 16
- 4a0:	91 e2       	ldi	r25, 0x21	; 33
- 4a2:	90 83       	st	Z, r25
- 4a4:	80 83       	st	Z, r24
- 4a6:	8f e7       	ldi	r24, 0x7F	; 127
- 4a8:	80 83       	st	Z, r24
- 4aa:	82 e2       	ldi	r24, 0x22	; 34
- 4ac:	80 83       	st	Z, r24
- 4ae:	60 83       	st	Z, r22
- 4b0:	86 e0       	ldi	r24, 0x06	; 6
- 4b2:	80 83       	st	Z, r24
- 4b4:	08 95       	ret
+ 4ce:	ef e0       	ldi	r30, 0x0F	; 15
+ 4d0:	f0 e1       	ldi	r31, 0x10	; 16
+ 4d2:	91 e2       	ldi	r25, 0x21	; 33
+ 4d4:	90 83       	st	Z, r25
+ 4d6:	80 83       	st	Z, r24
+ 4d8:	8f e7       	ldi	r24, 0x7F	; 127
+ 4da:	80 83       	st	Z, r24
+ 4dc:	82 e2       	ldi	r24, 0x22	; 34
+ 4de:	80 83       	st	Z, r24
+ 4e0:	60 83       	st	Z, r22
+ 4e2:	86 e0       	ldi	r24, 0x06	; 6
+ 4e4:	80 83       	st	Z, r24
+ 4e6:	08 95       	ret
 
-000004b6 <oled_goto_nextln>:
+000004e8 <oled_goto_nextln>:
 	oled_wr_cmd(END_PAGE);
 }
 
 void oled_goto_nextln(void){
 	// input: 0 to max-min
 	current_pag_address++;
- 4b6:	80 91 14 01 	lds	r24, 0x0114
- 4ba:	8f 5f       	subi	r24, 0xFF	; 255
- 4bc:	80 93 14 01 	sts	0x0114, r24
+ 4e8:	80 91 14 01 	lds	r24, 0x0114
+ 4ec:	8f 5f       	subi	r24, 0xFF	; 255
+ 4ee:	80 93 14 01 	sts	0x0114, r24
 	if(current_pag_address > END_PAGE - START_PAGE)
- 4c0:	80 91 14 01 	lds	r24, 0x0114
- 4c4:	87 30       	cpi	r24, 0x07	; 7
- 4c6:	10 f0       	brcs	.+4      	; 0x4cc <oled_goto_nextln+0x16>
+ 4f2:	80 91 14 01 	lds	r24, 0x0114
+ 4f6:	87 30       	cpi	r24, 0x07	; 7
+ 4f8:	10 f0       	brcs	.+4      	; 0x4fe <oled_goto_nextln+0x16>
 		current_pag_address = 0;
- 4c8:	10 92 14 01 	sts	0x0114, r1
+ 4fa:	10 92 14 01 	sts	0x0114, r1
 	oled_goto_xy(0, current_pag_address);
- 4cc:	60 91 14 01 	lds	r22, 0x0114
- 4d0:	80 e0       	ldi	r24, 0x00	; 0
- 4d2:	0e 94 4a 02 	call	0x494	; 0x494 <oled_goto_xy>
- 4d6:	08 95       	ret
+ 4fe:	60 91 14 01 	lds	r22, 0x0114
+ 502:	80 e0       	ldi	r24, 0x00	; 0
+ 504:	0e 94 63 02 	call	0x4c6	; 0x4c6 <oled_goto_xy>
+ 508:	08 95       	ret
 
-000004d8 <oled_putchar>:
+0000050a <oled_putchar>:
 }
 void oled_putchar( const char c){
- 4d8:	cf 93       	push	r28
+ 50a:	cf 93       	push	r28
 	if(c == '\n'){
- 4da:	8a 30       	cpi	r24, 0x0A	; 10
- 4dc:	19 f4       	brne	.+6      	; 0x4e4 <oled_putchar+0xc>
+ 50c:	8a 30       	cpi	r24, 0x0A	; 10
+ 50e:	19 f4       	brne	.+6      	; 0x516 <oled_putchar+0xc>
 		oled_goto_nextln();
- 4de:	0e 94 5b 02 	call	0x4b6	; 0x4b6 <oled_goto_nextln>
+ 510:	0e 94 74 02 	call	0x4e8	; 0x4e8 <oled_goto_nextln>
 		return;
- 4e2:	29 c0       	rjmp	.+82     	; 0x536 <__stack+0x37>
+ 514:	29 c0       	rjmp	.+82     	; 0x568 <oled_putchar+0x5e>
 	}
 	int i;
 	const char j = (c-' ');
- 4e4:	c0 ee       	ldi	r28, 0xE0	; 224
- 4e6:	c8 0f       	add	r28, r24
+ 516:	c0 ee       	ldi	r28, 0xE0	; 224
+ 518:	c8 0f       	add	r28, r24
 	current_col_address+=CHA_WIDTH;
- 4e8:	80 91 15 01 	lds	r24, 0x0115
- 4ec:	8b 5f       	subi	r24, 0xFB	; 251
- 4ee:	80 93 15 01 	sts	0x0115, r24
+ 51a:	80 91 15 01 	lds	r24, 0x0115
+ 51e:	8b 5f       	subi	r24, 0xFB	; 251
+ 520:	80 93 15 01 	sts	0x0115, r24
 
 	if(current_col_address/CHA_WIDTH >= MAX_CHARS_A_LINE){
- 4f2:	80 91 15 01 	lds	r24, 0x0115
- 4f6:	8d 37       	cpi	r24, 0x7D	; 125
- 4f8:	70 f0       	brcs	.+28     	; 0x516 <__stack+0x17>
+ 524:	80 91 15 01 	lds	r24, 0x0115
+ 528:	8d 37       	cpi	r24, 0x7D	; 125
+ 52a:	70 f0       	brcs	.+28     	; 0x548 <oled_putchar+0x3e>
 		//current_col_address = 0;
 		oled_goto_nextln();
- 4fa:	0e 94 5b 02 	call	0x4b6	; 0x4b6 <oled_goto_nextln>
- 4fe:	0b c0       	rjmp	.+22     	; 0x516 <__stack+0x17>
- 500:	fc 01       	movw	r30, r24
- 502:	e2 0f       	add	r30, r18
- 504:	f3 1f       	adc	r31, r19
+ 52c:	0e 94 74 02 	call	0x4e8	; 0x4e8 <oled_goto_nextln>
+ 530:	0b c0       	rjmp	.+22     	; 0x548 <oled_putchar+0x3e>
+ 532:	fc 01       	movw	r30, r24
+ 534:	e2 0f       	add	r30, r18
+ 536:	f3 1f       	adc	r31, r19
 	}
 
 
 	for(i = 0; i < 5; i++){
 		// pay attention, progmem read
 		 oled_wr_d(pgm_read_byte(&font[(int)j][i]));
- 506:	e4 91       	lpm	r30, Z
+ 538:	e4 91       	lpm	r30, Z
 void oled_wr_d(uint8_t data){
 	// write cmd to oled!! very important to add volatile
 	/*volatile char * const addr = OLED_ADDR_DATA_START;
 	*addr = data;*/
 	volatile uint8_t * const addr = (uint8_t *)OLED_ADDR_DATA_START;
 		*addr = data;
- 508:	ec 93       	st	X, r30
+ 53a:	ec 93       	st	X, r30
 		//current_col_address = 0;
 		oled_goto_nextln();
 	}
 
 
 	for(i = 0; i < 5; i++){
- 50a:	2f 5f       	subi	r18, 0xFF	; 255
- 50c:	3f 4f       	sbci	r19, 0xFF	; 255
- 50e:	25 30       	cpi	r18, 0x05	; 5
- 510:	31 05       	cpc	r19, r1
- 512:	b1 f7       	brne	.-20     	; 0x500 <__stack+0x1>
- 514:	10 c0       	rjmp	.+32     	; 0x536 <__stack+0x37>
- 516:	8c 2f       	mov	r24, r28
- 518:	90 e0       	ldi	r25, 0x00	; 0
- 51a:	9c 01       	movw	r18, r24
- 51c:	22 0f       	add	r18, r18
- 51e:	33 1f       	adc	r19, r19
- 520:	22 0f       	add	r18, r18
- 522:	33 1f       	adc	r19, r19
- 524:	82 0f       	add	r24, r18
- 526:	93 1f       	adc	r25, r19
+ 53c:	2f 5f       	subi	r18, 0xFF	; 255
+ 53e:	3f 4f       	sbci	r19, 0xFF	; 255
+ 540:	25 30       	cpi	r18, 0x05	; 5
+ 542:	31 05       	cpc	r19, r1
+ 544:	b1 f7       	brne	.-20     	; 0x532 <oled_putchar+0x28>
+ 546:	10 c0       	rjmp	.+32     	; 0x568 <oled_putchar+0x5e>
+ 548:	8c 2f       	mov	r24, r28
+ 54a:	90 e0       	ldi	r25, 0x00	; 0
+ 54c:	9c 01       	movw	r18, r24
+ 54e:	22 0f       	add	r18, r18
+ 550:	33 1f       	adc	r19, r19
+ 552:	22 0f       	add	r18, r18
+ 554:	33 1f       	adc	r19, r19
+ 556:	82 0f       	add	r24, r18
+ 558:	93 1f       	adc	r25, r19
 	current_pag_address++;
 	if(current_pag_address > END_PAGE - START_PAGE)
 		current_pag_address = 0;
 	oled_goto_xy(0, current_pag_address);
 }
 void oled_putchar( const char c){
- 528:	20 e0       	ldi	r18, 0x00	; 0
- 52a:	30 e0       	ldi	r19, 0x00	; 0
- 52c:	8c 52       	subi	r24, 0x2C	; 44
- 52e:	9f 4f       	sbci	r25, 0xFF	; 255
+ 55a:	20 e0       	ldi	r18, 0x00	; 0
+ 55c:	30 e0       	ldi	r19, 0x00	; 0
+ 55e:	8c 52       	subi	r24, 0x2C	; 44
+ 560:	9f 4f       	sbci	r25, 0xFF	; 255
 void oled_wr_d(uint8_t data){
 	// write cmd to oled!! very important to add volatile
 	/*volatile char * const addr = OLED_ADDR_DATA_START;
 	*addr = data;*/
 	volatile uint8_t * const addr = (uint8_t *)OLED_ADDR_DATA_START;
 		*addr = data;
- 530:	af e0       	ldi	r26, 0x0F	; 15
- 532:	b2 e1       	ldi	r27, 0x12	; 18
- 534:	e5 cf       	rjmp	.-54     	; 0x500 <__stack+0x1>
+ 562:	af e0       	ldi	r26, 0x0F	; 15
+ 564:	b2 e1       	ldi	r27, 0x12	; 18
+ 566:	e5 cf       	rjmp	.-54     	; 0x532 <oled_putchar+0x28>
 
 	for(i = 0; i < 5; i++){
 		// pay attention, progmem read
 		 oled_wr_d(pgm_read_byte(&font[(int)j][i]));
 	}
 }
- 536:	cf 91       	pop	r28
- 538:	08 95       	ret
+ 568:	cf 91       	pop	r28
+ 56a:	08 95       	ret
 
-0000053a <oled_putstr_P>:
+0000056c <oled_putstr_P>:
 }
 void oled_putstr_inverse( const char * str){
 	while(*str)
 		oled_putchar_inverse(*str++);
 }
 void oled_putstr_P( const char * str){
- 53a:	cf 93       	push	r28
- 53c:	df 93       	push	r29
- 53e:	ec 01       	movw	r28, r24
+ 56c:	cf 93       	push	r28
+ 56e:	df 93       	push	r29
+ 570:	ec 01       	movw	r28, r24
 		char read = pgm_read_byte(str);
- 540:	fc 01       	movw	r30, r24
- 542:	84 91       	lpm	r24, Z
+ 572:	fc 01       	movw	r30, r24
+ 574:	84 91       	lpm	r24, Z
 		// Display buffer on LCD.
 		while(read){
- 544:	88 23       	and	r24, r24
- 546:	39 f0       	breq	.+14     	; 0x556 <oled_putstr_P+0x1c>
+ 576:	88 23       	and	r24, r24
+ 578:	39 f0       	breq	.+14     	; 0x588 <oled_putstr_P+0x1c>
 			oled_putchar(read);
- 548:	0e 94 6c 02 	call	0x4d8	; 0x4d8 <oled_putchar>
+ 57a:	0e 94 85 02 	call	0x50a	; 0x50a <oled_putchar>
 			str++;
- 54c:	21 96       	adiw	r28, 0x01	; 1
+ 57e:	21 96       	adiw	r28, 0x01	; 1
 			read = pgm_read_byte(str);
- 54e:	fe 01       	movw	r30, r28
- 550:	84 91       	lpm	r24, Z
+ 580:	fe 01       	movw	r30, r28
+ 582:	84 91       	lpm	r24, Z
 		oled_putchar_inverse(*str++);
 }
 void oled_putstr_P( const char * str){
 		char read = pgm_read_byte(str);
 		// Display buffer on LCD.
 		while(read){
- 552:	81 11       	cpse	r24, r1
- 554:	f9 cf       	rjmp	.-14     	; 0x548 <oled_putstr_P+0xe>
+ 584:	81 11       	cpse	r24, r1
+ 586:	f9 cf       	rjmp	.-14     	; 0x57a <oled_putstr_P+0xe>
 			oled_putchar(read);
 			str++;
 			read = pgm_read_byte(str);
 		}
 		
 }
- 556:	df 91       	pop	r29
- 558:	cf 91       	pop	r28
- 55a:	08 95       	ret
+ 588:	df 91       	pop	r29
+ 58a:	cf 91       	pop	r28
+ 58c:	08 95       	ret
 
-0000055c <oled_clear>:
+0000058e <oled_clear>:
 		read = pgm_read_byte(str);
 	}
 	
 }
 void oled_clear(void){
 	current_col_address = 0;
- 55c:	10 92 15 01 	sts	0x0115, r1
+ 58e:	10 92 15 01 	sts	0x0115, r1
 	current_pag_address = 0;
- 560:	10 92 14 01 	sts	0x0114, r1
+ 592:	10 92 14 01 	sts	0x0114, r1
 void oled_wr_cmd(uint8_t cmd){
 	// write cmd to oled!! very important to add volatile
 	/*volatile char * const addr = OLED_ADDR_CMD_START;
 	*addr = cmd;*/
 	volatile uint8_t *  addr = (uint8_t *)OLED_ADDR_CMD_START;
 	*addr = cmd;
- 564:	ef e0       	ldi	r30, 0x0F	; 15
- 566:	f0 e1       	ldi	r31, 0x10	; 16
- 568:	8e ea       	ldi	r24, 0xAE	; 174
- 56a:	80 83       	st	Z, r24
- 56c:	80 e2       	ldi	r24, 0x20	; 32
- 56e:	80 83       	st	Z, r24
- 570:	10 82       	st	Z, r1
- 572:	81 e2       	ldi	r24, 0x21	; 33
- 574:	80 83       	st	Z, r24
- 576:	10 82       	st	Z, r1
- 578:	8f e7       	ldi	r24, 0x7F	; 127
- 57a:	80 83       	st	Z, r24
- 57c:	82 e2       	ldi	r24, 0x22	; 34
- 57e:	80 83       	st	Z, r24
- 580:	10 82       	st	Z, r1
- 582:	87 e0       	ldi	r24, 0x07	; 7
- 584:	80 83       	st	Z, r24
- 586:	80 e4       	ldi	r24, 0x40	; 64
- 588:	80 83       	st	Z, r24
- 58a:	80 e0       	ldi	r24, 0x00	; 0
- 58c:	94 e0       	ldi	r25, 0x04	; 4
+ 596:	ef e0       	ldi	r30, 0x0F	; 15
+ 598:	f0 e1       	ldi	r31, 0x10	; 16
+ 59a:	8e ea       	ldi	r24, 0xAE	; 174
+ 59c:	80 83       	st	Z, r24
+ 59e:	80 e2       	ldi	r24, 0x20	; 32
+ 5a0:	80 83       	st	Z, r24
+ 5a2:	10 82       	st	Z, r1
+ 5a4:	81 e2       	ldi	r24, 0x21	; 33
+ 5a6:	80 83       	st	Z, r24
+ 5a8:	10 82       	st	Z, r1
+ 5aa:	8f e7       	ldi	r24, 0x7F	; 127
+ 5ac:	80 83       	st	Z, r24
+ 5ae:	82 e2       	ldi	r24, 0x22	; 34
+ 5b0:	80 83       	st	Z, r24
+ 5b2:	10 82       	st	Z, r1
+ 5b4:	87 e0       	ldi	r24, 0x07	; 7
+ 5b6:	80 83       	st	Z, r24
+ 5b8:	80 e4       	ldi	r24, 0x40	; 64
+ 5ba:	80 83       	st	Z, r24
+ 5bc:	80 e0       	ldi	r24, 0x00	; 0
+ 5be:	94 e0       	ldi	r25, 0x04	; 4
 void oled_wr_d(uint8_t data){
 	// write cmd to oled!! very important to add volatile
 	/*volatile char * const addr = OLED_ADDR_DATA_START;
 	*addr = data;*/
 	volatile uint8_t * const addr = (uint8_t *)OLED_ADDR_DATA_START;
 		*addr = data;
- 58e:	ef e0       	ldi	r30, 0x0F	; 15
- 590:	f2 e1       	ldi	r31, 0x12	; 18
- 592:	10 82       	st	Z, r1
- 594:	01 97       	sbiw	r24, 0x01	; 1
+ 5c0:	ef e0       	ldi	r30, 0x0F	; 15
+ 5c2:	f2 e1       	ldi	r31, 0x12	; 18
+ 5c4:	10 82       	st	Z, r1
+ 5c6:	01 97       	sbiw	r24, 0x01	; 1
 	oled_wr_cmd(0x22);
 	oled_wr_cmd(0);
 	oled_wr_cmd(7);
 	oled_wr_cmd(0x40);
 	int temp;
 	for(temp = 0; temp < 8*128; temp++){
- 596:	00 97       	sbiw	r24, 0x00	; 0
- 598:	e1 f7       	brne	.-8      	; 0x592 <oled_clear+0x36>
+ 5c8:	00 97       	sbiw	r24, 0x00	; 0
+ 5ca:	e1 f7       	brne	.-8      	; 0x5c4 <oled_clear+0x36>
 void oled_wr_cmd(uint8_t cmd){
 	// write cmd to oled!! very important to add volatile
 	/*volatile char * const addr = OLED_ADDR_CMD_START;
 	*addr = cmd;*/
 	volatile uint8_t *  addr = (uint8_t *)OLED_ADDR_CMD_START;
 	*addr = cmd;
- 59a:	ef e0       	ldi	r30, 0x0F	; 15
- 59c:	f0 e1       	ldi	r31, 0x10	; 16
- 59e:	81 e2       	ldi	r24, 0x21	; 33
- 5a0:	80 83       	st	Z, r24
- 5a2:	10 82       	st	Z, r1
- 5a4:	8f e7       	ldi	r24, 0x7F	; 127
- 5a6:	80 83       	st	Z, r24
- 5a8:	82 e2       	ldi	r24, 0x22	; 34
- 5aa:	80 83       	st	Z, r24
- 5ac:	10 82       	st	Z, r1
- 5ae:	86 e0       	ldi	r24, 0x06	; 6
- 5b0:	80 83       	st	Z, r24
- 5b2:	8c e7       	ldi	r24, 0x7C	; 124
- 5b4:	80 83       	st	Z, r24
- 5b6:	8f ea       	ldi	r24, 0xAF	; 175
- 5b8:	80 83       	st	Z, r24
+ 5cc:	ef e0       	ldi	r30, 0x0F	; 15
+ 5ce:	f0 e1       	ldi	r31, 0x10	; 16
+ 5d0:	81 e2       	ldi	r24, 0x21	; 33
+ 5d2:	80 83       	st	Z, r24
+ 5d4:	10 82       	st	Z, r1
+ 5d6:	8f e7       	ldi	r24, 0x7F	; 127
+ 5d8:	80 83       	st	Z, r24
+ 5da:	82 e2       	ldi	r24, 0x22	; 34
+ 5dc:	80 83       	st	Z, r24
+ 5de:	10 82       	st	Z, r1
+ 5e0:	86 e0       	ldi	r24, 0x06	; 6
+ 5e2:	80 83       	st	Z, r24
+ 5e4:	8c e7       	ldi	r24, 0x7C	; 124
+ 5e6:	80 83       	st	Z, r24
+ 5e8:	8f ea       	ldi	r24, 0xAF	; 175
+ 5ea:	80 83       	st	Z, r24
 	oled_wr_cmd(0x22);
 	oled_wr_cmd(START_PAGE);
 	oled_wr_cmd(END_PAGE);
 	oled_wr_cmd(0x7c);
 	oled_wr_cmd(0xaf); // on
 	oled_goto_xy(0,0);
- 5ba:	60 e0       	ldi	r22, 0x00	; 0
- 5bc:	80 e0       	ldi	r24, 0x00	; 0
- 5be:	0e 94 4a 02 	call	0x494	; 0x494 <oled_goto_xy>
- 5c2:	08 95       	ret
+ 5ec:	60 e0       	ldi	r22, 0x00	; 0
+ 5ee:	80 e0       	ldi	r24, 0x00	; 0
+ 5f0:	0e 94 63 02 	call	0x4c6	; 0x4c6 <oled_goto_xy>
+ 5f4:	08 95       	ret
 
-000005c4 <oled_putchar_inverse>:
+000005f6 <oled_putchar_inverse>:
 
 	oled_putchar(var);
 	return 0;
 }
 
 void oled_putchar_inverse(char c){
- 5c4:	cf 93       	push	r28
+ 5f6:	cf 93       	push	r28
 	if(c == '\n'){
- 5c6:	8a 30       	cpi	r24, 0x0A	; 10
- 5c8:	19 f4       	brne	.+6      	; 0x5d0 <oled_putchar_inverse+0xc>
+ 5f8:	8a 30       	cpi	r24, 0x0A	; 10
+ 5fa:	19 f4       	brne	.+6      	; 0x602 <oled_putchar_inverse+0xc>
 		oled_goto_nextln();
- 5ca:	0e 94 5b 02 	call	0x4b6	; 0x4b6 <oled_goto_nextln>
+ 5fc:	0e 94 74 02 	call	0x4e8	; 0x4e8 <oled_goto_nextln>
 		return;
- 5ce:	2a c0       	rjmp	.+84     	; 0x624 <oled_putchar_inverse+0x60>
+ 600:	2a c0       	rjmp	.+84     	; 0x656 <oled_putchar_inverse+0x60>
 	}
 	int i;
 	const char j = (c-' ');
- 5d0:	c0 ee       	ldi	r28, 0xE0	; 224
- 5d2:	c8 0f       	add	r28, r24
+ 602:	c0 ee       	ldi	r28, 0xE0	; 224
+ 604:	c8 0f       	add	r28, r24
 	current_col_address+=CHA_WIDTH;
- 5d4:	80 91 15 01 	lds	r24, 0x0115
- 5d8:	8b 5f       	subi	r24, 0xFB	; 251
- 5da:	80 93 15 01 	sts	0x0115, r24
+ 606:	80 91 15 01 	lds	r24, 0x0115
+ 60a:	8b 5f       	subi	r24, 0xFB	; 251
+ 60c:	80 93 15 01 	sts	0x0115, r24
 
 	if(current_col_address/CHA_WIDTH >= MAX_CHARS_A_LINE){
- 5de:	80 91 15 01 	lds	r24, 0x0115
- 5e2:	8d 37       	cpi	r24, 0x7D	; 125
- 5e4:	78 f0       	brcs	.+30     	; 0x604 <oled_putchar_inverse+0x40>
+ 610:	80 91 15 01 	lds	r24, 0x0115
+ 614:	8d 37       	cpi	r24, 0x7D	; 125
+ 616:	78 f0       	brcs	.+30     	; 0x636 <oled_putchar_inverse+0x40>
 		//current_col_address = 0;
 		oled_goto_nextln();
- 5e6:	0e 94 5b 02 	call	0x4b6	; 0x4b6 <oled_goto_nextln>
- 5ea:	0c c0       	rjmp	.+24     	; 0x604 <oled_putchar_inverse+0x40>
- 5ec:	fc 01       	movw	r30, r24
- 5ee:	e2 0f       	add	r30, r18
- 5f0:	f3 1f       	adc	r31, r19
+ 618:	0e 94 74 02 	call	0x4e8	; 0x4e8 <oled_goto_nextln>
+ 61c:	0c c0       	rjmp	.+24     	; 0x636 <oled_putchar_inverse+0x40>
+ 61e:	fc 01       	movw	r30, r24
+ 620:	e2 0f       	add	r30, r18
+ 622:	f3 1f       	adc	r31, r19
 	}
 
 
 	for(i = 0; i < 5; i++){
 		// pay attention, progmem read
 		oled_wr_d(~(pgm_read_byte(&font[(int)j][i])));
- 5f2:	e4 91       	lpm	r30, Z
- 5f4:	e0 95       	com	r30
+ 624:	e4 91       	lpm	r30, Z
+ 626:	e0 95       	com	r30
 void oled_wr_d(uint8_t data){
 	// write cmd to oled!! very important to add volatile
 	/*volatile char * const addr = OLED_ADDR_DATA_START;
 	*addr = data;*/
 	volatile uint8_t * const addr = (uint8_t *)OLED_ADDR_DATA_START;
 		*addr = data;
- 5f6:	ec 93       	st	X, r30
+ 628:	ec 93       	st	X, r30
 		//current_col_address = 0;
 		oled_goto_nextln();
 	}
 
 
 	for(i = 0; i < 5; i++){
- 5f8:	2f 5f       	subi	r18, 0xFF	; 255
- 5fa:	3f 4f       	sbci	r19, 0xFF	; 255
- 5fc:	25 30       	cpi	r18, 0x05	; 5
- 5fe:	31 05       	cpc	r19, r1
- 600:	a9 f7       	brne	.-22     	; 0x5ec <oled_putchar_inverse+0x28>
- 602:	10 c0       	rjmp	.+32     	; 0x624 <oled_putchar_inverse+0x60>
- 604:	8c 2f       	mov	r24, r28
- 606:	90 e0       	ldi	r25, 0x00	; 0
- 608:	9c 01       	movw	r18, r24
- 60a:	22 0f       	add	r18, r18
- 60c:	33 1f       	adc	r19, r19
- 60e:	22 0f       	add	r18, r18
- 610:	33 1f       	adc	r19, r19
- 612:	82 0f       	add	r24, r18
- 614:	93 1f       	adc	r25, r19
+ 62a:	2f 5f       	subi	r18, 0xFF	; 255
+ 62c:	3f 4f       	sbci	r19, 0xFF	; 255
+ 62e:	25 30       	cpi	r18, 0x05	; 5
+ 630:	31 05       	cpc	r19, r1
+ 632:	a9 f7       	brne	.-22     	; 0x61e <oled_putchar_inverse+0x28>
+ 634:	10 c0       	rjmp	.+32     	; 0x656 <oled_putchar_inverse+0x60>
+ 636:	8c 2f       	mov	r24, r28
+ 638:	90 e0       	ldi	r25, 0x00	; 0
+ 63a:	9c 01       	movw	r18, r24
+ 63c:	22 0f       	add	r18, r18
+ 63e:	33 1f       	adc	r19, r19
+ 640:	22 0f       	add	r18, r18
+ 642:	33 1f       	adc	r19, r19
+ 644:	82 0f       	add	r24, r18
+ 646:	93 1f       	adc	r25, r19
 
 	oled_putchar(var);
 	return 0;
 }
 
 void oled_putchar_inverse(char c){
- 616:	20 e0       	ldi	r18, 0x00	; 0
- 618:	30 e0       	ldi	r19, 0x00	; 0
- 61a:	8c 52       	subi	r24, 0x2C	; 44
- 61c:	9f 4f       	sbci	r25, 0xFF	; 255
+ 648:	20 e0       	ldi	r18, 0x00	; 0
+ 64a:	30 e0       	ldi	r19, 0x00	; 0
+ 64c:	8c 52       	subi	r24, 0x2C	; 44
+ 64e:	9f 4f       	sbci	r25, 0xFF	; 255
 void oled_wr_d(uint8_t data){
 	// write cmd to oled!! very important to add volatile
 	/*volatile char * const addr = OLED_ADDR_DATA_START;
 	*addr = data;*/
 	volatile uint8_t * const addr = (uint8_t *)OLED_ADDR_DATA_START;
 		*addr = data;
- 61e:	af e0       	ldi	r26, 0x0F	; 15
- 620:	b2 e1       	ldi	r27, 0x12	; 18
- 622:	e4 cf       	rjmp	.-56     	; 0x5ec <oled_putchar_inverse+0x28>
+ 650:	af e0       	ldi	r26, 0x0F	; 15
+ 652:	b2 e1       	ldi	r27, 0x12	; 18
+ 654:	e4 cf       	rjmp	.-56     	; 0x61e <oled_putchar_inverse+0x28>
 
 	for(i = 0; i < 5; i++){
 		// pay attention, progmem read
 		oled_wr_d(~(pgm_read_byte(&font[(int)j][i])));
 	}
 }
- 624:	cf 91       	pop	r28
- 626:	08 95       	ret
+ 656:	cf 91       	pop	r28
+ 658:	08 95       	ret
 
-00000628 <oled_putstr_inverse>:
+0000065a <oled_putstr_inverse>:
 
 void oled_putstr( const char * str){
 	while(*str)
 		oled_putchar(*str++);
 }
 void oled_putstr_inverse( const char * str){
- 628:	cf 93       	push	r28
- 62a:	df 93       	push	r29
- 62c:	ec 01       	movw	r28, r24
+ 65a:	cf 93       	push	r28
+ 65c:	df 93       	push	r29
+ 65e:	ec 01       	movw	r28, r24
 	while(*str)
- 62e:	88 81       	ld	r24, Y
- 630:	88 23       	and	r24, r24
- 632:	31 f0       	breq	.+12     	; 0x640 <oled_putstr_inverse+0x18>
- 634:	21 96       	adiw	r28, 0x01	; 1
+ 660:	88 81       	ld	r24, Y
+ 662:	88 23       	and	r24, r24
+ 664:	31 f0       	breq	.+12     	; 0x672 <oled_putstr_inverse+0x18>
+ 666:	21 96       	adiw	r28, 0x01	; 1
 		oled_putchar_inverse(*str++);
- 636:	0e 94 e2 02 	call	0x5c4	; 0x5c4 <oled_putchar_inverse>
+ 668:	0e 94 fb 02 	call	0x5f6	; 0x5f6 <oled_putchar_inverse>
 void oled_putstr( const char * str){
 	while(*str)
 		oled_putchar(*str++);
 }
 void oled_putstr_inverse( const char * str){
 	while(*str)
- 63a:	89 91       	ld	r24, Y+
- 63c:	81 11       	cpse	r24, r1
- 63e:	fb cf       	rjmp	.-10     	; 0x636 <oled_putstr_inverse+0xe>
+ 66c:	89 91       	ld	r24, Y+
+ 66e:	81 11       	cpse	r24, r1
+ 670:	fb cf       	rjmp	.-10     	; 0x668 <oled_putstr_inverse+0xe>
 		oled_putchar_inverse(*str++);
 }
- 640:	df 91       	pop	r29
- 642:	cf 91       	pop	r28
- 644:	08 95       	ret
+ 672:	df 91       	pop	r29
+ 674:	cf 91       	pop	r28
+ 676:	08 95       	ret
 
-00000646 <oled_putstr_P_inverse>:
+00000678 <oled_putstr_P_inverse>:
 			str++;
 			read = pgm_read_byte(str);
 		}
 		
 }
 void oled_putstr_P_inverse( const char * str){
- 646:	cf 93       	push	r28
- 648:	df 93       	push	r29
- 64a:	ec 01       	movw	r28, r24
+ 678:	cf 93       	push	r28
+ 67a:	df 93       	push	r29
+ 67c:	ec 01       	movw	r28, r24
 	char read = pgm_read_byte(str);
- 64c:	fc 01       	movw	r30, r24
- 64e:	84 91       	lpm	r24, Z
+ 67e:	fc 01       	movw	r30, r24
+ 680:	84 91       	lpm	r24, Z
 	// Display buffer on LCD.
 	while(read){
- 650:	88 23       	and	r24, r24
- 652:	39 f0       	breq	.+14     	; 0x662 <oled_putstr_P_inverse+0x1c>
+ 682:	88 23       	and	r24, r24
+ 684:	39 f0       	breq	.+14     	; 0x694 <oled_putstr_P_inverse+0x1c>
 		oled_putchar_inverse(read);
- 654:	0e 94 e2 02 	call	0x5c4	; 0x5c4 <oled_putchar_inverse>
+ 686:	0e 94 fb 02 	call	0x5f6	; 0x5f6 <oled_putchar_inverse>
 		str++;
- 658:	21 96       	adiw	r28, 0x01	; 1
+ 68a:	21 96       	adiw	r28, 0x01	; 1
 		read = pgm_read_byte(str);
- 65a:	fe 01       	movw	r30, r28
- 65c:	84 91       	lpm	r24, Z
+ 68c:	fe 01       	movw	r30, r28
+ 68e:	84 91       	lpm	r24, Z
 		
 }
 void oled_putstr_P_inverse( const char * str){
 	char read = pgm_read_byte(str);
 	// Display buffer on LCD.
 	while(read){
- 65e:	81 11       	cpse	r24, r1
- 660:	f9 cf       	rjmp	.-14     	; 0x654 <oled_putstr_P_inverse+0xe>
+ 690:	81 11       	cpse	r24, r1
+ 692:	f9 cf       	rjmp	.-14     	; 0x686 <oled_putstr_P_inverse+0xe>
 		oled_putchar_inverse(read);
 		str++;
 		read = pgm_read_byte(str);
 	}
 	
 }
- 662:	df 91       	pop	r29
- 664:	cf 91       	pop	r28
- 666:	08 95       	ret
+ 694:	df 91       	pop	r29
+ 696:	cf 91       	pop	r28
+ 698:	08 95       	ret
 
-00000668 <_exit>:
- 668:	f8 94       	cli
+0000069a <_exit>:
+ 69a:	f8 94       	cli
 
-0000066a <__stop_program>:
- 66a:	ff cf       	rjmp	.-2      	; 0x66a <__stop_program>
+0000069c <__stop_program>:
+ 69c:	ff cf       	rjmp	.-2      	; 0x69c <__stop_program>

@@ -48,9 +48,9 @@ void generic_SelectCallback(uint8_t x, uint8_t y, const char* str){
  *  \param[in] Text   Text of the selected menu to write, in \ref MENU_ITEM_STORAGE memory space
  */
 
-MENU_ITEM( Menu_1, (5), (2), Menu_2, Menu_3, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "I love Zhang Yun!\n");
+MENU_ITEM( Menu_1, (5), (2), Menu_2, NULL_MENU, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "I love Zhang Yun!\n");
 MENU_ITEM( Menu_2, (10), (3), Menu_3, Menu_1, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "I am Second\n");
-MENU_ITEM( Menu_3, (15), (4), Menu_1, Menu_2, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "I am Third\n");
+MENU_ITEM( Menu_3, (15), (4), NULL_MENU, Menu_2, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "I am Third\n");
 //MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_2, NULL_MENU, NULL_MENU, NULL, NULL, "1.1");
 //MENU_ITEM(Menu_1_2, Menu_1_1, Menu_1_1, NULL_MENU, NULL_MENU, NULL, NULL, "1.2");
 
@@ -63,7 +63,7 @@ int main(void)
 	
 	Menu_Navigate(&Menu_1);
 	Menu_DrawBase();
-	Menu_Navigate(&Menu_2);
+	//Menu_Navigate(&Menu_2);
 	while (1)
     { 
 	

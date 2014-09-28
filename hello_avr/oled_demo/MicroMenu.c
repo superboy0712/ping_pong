@@ -74,18 +74,21 @@ void Menu_EnterCurrentItem(void)
 /* draw the base of the whole menu, all same level items of new         */
 /************************************************************************/
 void Menu_DrawBase(void){
-	Menu_Item_t * ptr = MENU_ITEM_READ_POINTER(CurrentMenuItem);// payattention here you need some thing
+	Menu_Item_t * ptr = Menu_GetCurrentMenu();// payattention here you need some thing
 	if ((ptr == &NULL_MENU) || (ptr == NULL))
 	return;
 	// get the first item of the same level
-	while (( ptr->Previous != &NULL_MENU) && ( ptr->Previous != NULL))
-		ptr = ptr->Previous;
+	while (
+		(MENU_ITEM_READ_POINTER(&ptr->Previous) != &NULL_MENU)
+		 && (MENU_ITEM_READ_POINTER(&ptr->Previous) != NULL)
+		 )
+		ptr = MENU_ITEM_READ_POINTER(&ptr->Previous);
 		
 	// get the first item of the same level
 	if (MenuWriteFunc){
 		MenuWriteFunc(pgm_read_byte(&(ptr->pos_x)),pgm_read_byte(&(ptr->pos_y)),ptr->Text);
-		while (( ptr->Next != &NULL_MENU) && ( ptr->Next != NULL)) {
-			ptr = ptr->Next;
+		while (( MENU_ITEM_READ_POINTER(&ptr->Next) != &NULL_MENU) && ( MENU_ITEM_READ_POINTER(&ptr->Next) != NULL)) {
+			ptr = MENU_ITEM_READ_POINTER(&ptr->Next);
 			MenuWriteFunc(pgm_read_byte(&(ptr->pos_x)),pgm_read_byte(&(ptr->pos_y)),ptr->Text);
 		}
 	}
