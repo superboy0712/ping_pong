@@ -5,7 +5,7 @@
 #include <util/delay.h>
 #include "oled.h"
 #include "MicroMenu.h"
-
+#include "ADC.h"
 
 /*** DUMY CODE ***/
 enum ButtonValues
@@ -25,20 +25,12 @@ enum ButtonValues GetButtonPress(void)
 /*** END DUMY CODE ***/
 
 
-/** Example menu item specific enter callback function, run when the associated menu item is entered. */
-static void Level1Item1_Enter(void)
-{
-	puts("ENTER");
-}
+
 static void genric_draw_fun(uint8_t x, uint8_t y, const char *str){
 	oled_goto_xy(x,y);
 	oled_putstr_P(str);
 }
-/** Example menu item specific select callback function, run when the associated menu item is selected. */
-static void Level1Item1_Select(void)
-{
-	oled_putstr_inverse("\nSELECTjkjlj");
-}
+
 void generic_SelectCallback(uint8_t x, uint8_t y, const char* str){
 	oled_goto_xy(x,y);
 	oled_putstr_P_inverse(str);
@@ -53,21 +45,27 @@ MENU_ITEM( Menu_2, (10), (3), Menu_3, Menu_1, NULL_MENU, NULL_MENU, generic_Sele
 MENU_ITEM( Menu_3, (15), (4), NULL_MENU, Menu_2, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "I am Third\n");
 //MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_2, NULL_MENU, NULL_MENU, NULL, NULL, "1.1");
 //MENU_ITEM(Menu_1_2, Menu_1_1, Menu_1_1, NULL_MENU, NULL_MENU, NULL, NULL, "1.2");
+static FILE oled_stdout =  FDEV_SETUP_STREAM(oled_putchar_printf, NULL, _FDEV_SETUP_WRITE);
 
 int main(void)
 {	/* Set up the default menu text write callback, and navigate to an absolute menu item entry. */
+		stdout = &oled_stdout;
 		oled_init();
 		oled_clear();
 		oled_putstr_inverse("hello world!!\n");
-	Menu_SetGenericWriteCallback(genric_draw_fun);
+		adc_init();
+	/*Menu_SetGenericWriteCallback(genric_draw_fun);
+	
 	
 	Menu_Navigate(&Menu_1);
 	Menu_DrawBase();
-	Menu_Navigate(&Menu_3);
+	Menu_Navigate(&Menu_3);*/
+	
 	while (1)
     { 
-	
-	
+		adc_pos_t pos = adc_get_position();
+		printf(" x: %d, y:%d \n", pos.x, pos.y);
+
 		/* Example usage of Micromenu - here you can create your custom menu navigation system; you may wish to perform
 		 * other tasks while detecting key presses, enter sleep mode while waiting for user input, etc.
 		 */

@@ -108,6 +108,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="oled_demo\ADC.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="oled_demo\ADC.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="oled_demo\Example.c">
       <SubType>compile</SubType>
     </Compile>

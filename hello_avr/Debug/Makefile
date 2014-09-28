@@ -37,6 +37,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../oled_demo/ADC.c \
 ../oled_demo/Example.c \
 ../oled_demo/MicroMenu.c \
 ../oled_demo/oled.c
@@ -49,21 +50,25 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+oled_demo/ADC.o \
 oled_demo/Example.o \
 oled_demo/MicroMenu.o \
 oled_demo/oled.o
 
 OBJS_AS_ARGS +=  \
+oled_demo/ADC.o \
 oled_demo/Example.o \
 oled_demo/MicroMenu.o \
 oled_demo/oled.o
 
 C_DEPS +=  \
+oled_demo/ADC.d \
 oled_demo/Example.d \
 oled_demo/MicroMenu.d \
 oled_demo/oled.d
 
 C_DEPS_AS_ARGS +=  \
+oled_demo/ADC.d \
 oled_demo/Example.d \
 oled_demo/MicroMenu.d \
 oled_demo/oled.d
@@ -79,6 +84,8 @@ OUTPUT_FILE_DEP:= ./makedep.mk
 LIB_DEP+= 
 
 # AVR32/GNU C Compiler
+
+
 
 
 
