@@ -63,7 +63,7 @@ int main(void)
 	
 	Menu_Navigate(&Menu_1);
 	Menu_DrawBase();
-	//Menu_Navigate(&Menu_2);
+	Menu_Navigate(&Menu_3);
 	while (1)
     { 
 	
