@@ -42,13 +42,15 @@ void Menu_Navigate(Menu_Item_t* const NewMenu)
 
 	CurrentMenuItem = NewMenu;
 
+/*
 	if (MenuWriteFunc)
 		MenuWriteFunc(pgm_read_byte(&(CurrentMenuItem->pos_x)),pgm_read_byte(&(CurrentMenuItem->pos_y)),CurrentMenuItem->Text);
+*/
 
-	void (*SelectCallback)(void) = MENU_ITEM_READ_POINTER(&CurrentMenuItem->SelectCallback);
+	void (*SelectCallback)(uint8_t x, uint8_t y, const char* Text) = MENU_ITEM_READ_POINTER(&CurrentMenuItem->SelectCallback);
 
 	if (SelectCallback)
-		SelectCallback();
+		SelectCallback(pgm_read_byte(&(CurrentMenuItem->pos_x)),pgm_read_byte(&(CurrentMenuItem->pos_y)),CurrentMenuItem->Text);
 }
 
 void Menu_SetGenericWriteCallback(void (*WriteFunc)(uint8_t x, uint8_t y, const char* Text))
@@ -66,4 +68,25 @@ void Menu_EnterCurrentItem(void)
 
 	if (EnterCallback)
 		EnterCallback();
+}
+
+/************************************************************************/
+/* draw the base of the whole menu, all same level items of new         */
+/************************************************************************/
+void Menu_DrawBase(void){
+	Menu_Item_t * ptr = MENU_ITEM_READ_POINTER(CurrentMenuItem);// payattention here you need some thing
+	if ((ptr == &NULL_MENU) || (ptr == NULL))
+	return;
+	// get the first item of the same level
+	while (( ptr->Previous != &NULL_MENU) && ( ptr->Previous != NULL))
+		ptr = ptr->Previous;
+		
+	// get the first item of the same level
+	if (MenuWriteFunc){
+		MenuWriteFunc(pgm_read_byte(&(ptr->pos_x)),pgm_read_byte(&(ptr->pos_y)),ptr->Text);
+		while (( ptr->Next != &NULL_MENU) && ( ptr->Next != NULL)) {
+			ptr = ptr->Next;
+			MenuWriteFunc(pgm_read_byte(&(ptr->pos_x)),pgm_read_byte(&(ptr->pos_y)),ptr->Text);
+		}
+	}
 }

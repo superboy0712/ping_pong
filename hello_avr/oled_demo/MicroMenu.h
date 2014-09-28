@@ -25,7 +25,7 @@
 		const struct Menu_Item *Previous; /**< Pointer to the previous menu item of this menu item */
 		const struct Menu_Item *Parent; /**< Pointer to the parent menu item of this menu item */
 		const struct Menu_Item *Child; /**< Pointer to the child menu item of this menu item */
-		void (*SelectCallback)(void); /**< Pointer to the optional menu-specific select callback of this menu item */
+		void (*SelectCallback)(uint8_t x, uint8_t y, const char* Text); /**< Pointer to the optional menu-specific select callback of this menu item */
 		void (*EnterCallback)(void); /**< Pointer to the optional menu-specific enter callback of this menu item */
 		const char Text[]; /**< Menu item text to pass to the menu display callback function */
 	} Menu_Item_t;
@@ -85,5 +85,9 @@
 
 	/** Enters the currently selected menu item, running its configured callback function (if any). */
 	void Menu_EnterCurrentItem(void);
+	/************************************************************************/
+	/* draw the base of the whole menu, all same level items of new         */
+	/************************************************************************/
+	void Menu_DrawBase(void);
 
 #endif

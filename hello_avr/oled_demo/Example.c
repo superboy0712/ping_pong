@@ -39,15 +39,18 @@ static void Level1Item1_Select(void)
 {
 	oled_putstr_inverse("\nSELECTjkjlj");
 }
-
+void generic_SelectCallback(uint8_t x, uint8_t y, const char* str){
+	oled_goto_xy(x,y);
+	oled_putstr_P_inverse(str);
+}
 /** Generic function to write the text of a menu.
  *
  *  \param[in] Text   Text of the selected menu to write, in \ref MENU_ITEM_STORAGE memory space
  */
 
-MENU_ITEM( Menu_1, (5), (2), Menu_2, Menu_3, NULL_MENU, NULL_MENU, NULL, NULL, "I love Zhang Yun!\n");
-MENU_ITEM( Menu_2, (10), (3), Menu_3, Menu_1, NULL_MENU, NULL_MENU, NULL, NULL, "I am Second\n");
-MENU_ITEM( Menu_3, (15), (4), Menu_1, Menu_2, NULL_MENU, NULL_MENU, NULL, NULL, "I am Third\n");
+MENU_ITEM( Menu_1, (5), (2), Menu_2, Menu_3, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "I love Zhang Yun!\n");
+MENU_ITEM( Menu_2, (10), (3), Menu_3, Menu_1, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "I am Second\n");
+MENU_ITEM( Menu_3, (15), (4), Menu_1, Menu_2, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "I am Third\n");
 //MENU_ITEM(Menu_1_1, Menu_1_2, Menu_1_2, NULL_MENU, NULL_MENU, NULL, NULL, "1.1");
 //MENU_ITEM(Menu_1_2, Menu_1_1, Menu_1_1, NULL_MENU, NULL_MENU, NULL, NULL, "1.2");
 
@@ -57,9 +60,10 @@ int main(void)
 		oled_clear();
 		oled_putstr_inverse("hello world!!\n");
 	Menu_SetGenericWriteCallback(genric_draw_fun);
+	
 	Menu_Navigate(&Menu_1);
-	Menu_Navigate(MENU_NEXT);
-	Menu_Navigate(MENU_NEXT);
+	Menu_DrawBase();
+	Menu_Navigate(&Menu_2);
 	while (1)
     { 
 	
