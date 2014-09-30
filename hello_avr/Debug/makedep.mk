@@ -4,9 +4,11 @@
 
 oled_demo\ADC.c
 
-oled_demo\Example.c
+oled_demo\main.c
 
 oled_demo\MicroMenu.c
 
 oled_demo\oled.c
+
+oled_demo\usart.c
 
