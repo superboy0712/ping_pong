@@ -44,18 +44,23 @@ void generic_SelectCallback(uint8_t x, uint8_t y, const char* str){
  *  \param[in] Text   Text of the selected menu to write, in \ref MENU_ITEM_STORAGE memory space
  */
 
-MENU_ITEM( Menu_1, (5), (2), Menu_2, NULL_MENU, NULL_MENU, Menu_1_1, generic_SelectCallback, NULL, "I love Zhang Yun!\n");
-MENU_ITEM( Menu_2, (10), (3), Menu_3, Menu_1, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "I am Second\n");
-MENU_ITEM( Menu_3, (15), (4), Menu_4, Menu_2, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "I am Third\n");
-MENU_ITEM( Menu_4, (20), (5), NULL_MENU, Menu_3, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "I am Fourth\n");
-MENU_ITEM( Menu_1_1, 0, 0, Menu_1_2, NULL_MENU, Menu_1, NULL_MENU, generic_SelectCallback, NULL, "1.1");
-MENU_ITEM( Menu_1_2, 0, 1, NULL_MENU, Menu_1_1, Menu_1, NULL_MENU, generic_SelectCallback, NULL, "1.2");
+MENU_ITEM( Menu_1, (5), (2), Menu_2, NULL_MENU, NULL_MENU, Menu_1_1, generic_SelectCallback, NULL, "Uart done!");
+MENU_ITEM( Menu_2, (10), (3), Menu_3, Menu_1, NULL_MENU, Menu_2_1, generic_SelectCallback, NULL, "Sram done!");
+MENU_ITEM( Menu_3, (15), (4), Menu_4, Menu_2, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "Oled done!");
+MENU_ITEM( Menu_4, (20), (5), NULL_MENU, Menu_3, NULL_MENU, NULL_MENU, generic_SelectCallback, NULL, "Can almost done!");
+MENU_ITEM( Menu_1_1, 7, 1, Menu_1_2, NULL_MENU, Menu_1, NULL_MENU, generic_SelectCallback, NULL, "Uart.1");
+MENU_ITEM( Menu_1_2, 7, 2, Menu_1_3, Menu_1_1, Menu_1, NULL_MENU, generic_SelectCallback, NULL, "Uart.2");
+MENU_ITEM( Menu_1_3, 7, 3, NULL_MENU, Menu_1_2, Menu_1, NULL_MENU, generic_SelectCallback, NULL, "Uart.3");
+MENU_ITEM( Menu_2_1, 7, 1, Menu_2_2, NULL_MENU, Menu_2, NULL_MENU, generic_SelectCallback, NULL, "Sram.1");
+MENU_ITEM( Menu_2_2, 7, 2, Menu_2_3, Menu_2_1, Menu_2, NULL_MENU, generic_SelectCallback, NULL, "Sram.2");
+MENU_ITEM( Menu_2_3, 7, 3, NULL_MENU, Menu_2_2, Menu_2, NULL_MENU, generic_SelectCallback, NULL, "Sram.3");
 static FILE oled_stdout =  FDEV_SETUP_STREAM(oled_putchar_printf, NULL, _FDEV_SETUP_WRITE);
 static FILE usart_stdout =  FDEV_SETUP_STREAM(usart_putchar_printf, NULL, _FDEV_SETUP_WRITE);
 int main(void)
 {	/* Set up the default menu text write callback, and navigate to an absolute menu item entry. */
 		stdout = &oled_stdout;
 		usart_init(MYUBRR);
+		
 		fprintf(&usart_stdout,"Usart says hello!\n");
 		oled_init();
 		oled_clear();
@@ -63,7 +68,7 @@ int main(void)
 		adc_init();
 	Menu_SetGenericWriteCallback(genric_draw_fun);
 	Menu_SetGenericClear(oled_clear);
-	
+	oled_clear();
 	Menu_Navigate(&Menu_1);
 	Menu_DrawBase();
 	Menu_Navigate(&Menu_1);
